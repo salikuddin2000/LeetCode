@@ -16,15 +16,14 @@ public:
     TreeNode *x=NULL,*y=NULL,*prev=NULL;
     void inorder(TreeNode* root){
         if(!root) return;
-        if(root->left) inorder(root->left);
+        inorder(root->left);
         if(prev&&root->val<prev->val){
             y=root;
             if(!x) x=prev;
             else return;
         }
         prev=root;
-        if(root->right) inorder(root->right);
-        return;
+        inorder(root->right);
     }
     void recoverTree(TreeNode* root) {
         inorder(root);

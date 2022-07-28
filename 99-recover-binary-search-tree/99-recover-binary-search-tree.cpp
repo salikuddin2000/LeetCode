@@ -13,25 +13,25 @@ class Solution {
 public:
     // TreeNode* min = new TreeNode();
     // TreeNode* max = new TreeNode();
-    vector<TreeNode*> v;
+    TreeNode *x=NULL,*y=NULL,*prev=NULL;
     void inorder(TreeNode* root){
         if(!root) return;
         if(root->left) inorder(root->left);
-        v.push_back(root);
+        if(prev&&root->val<prev->val){
+            y=root;
+            if(!x) x=prev;
+            else return;
+        }
+        prev=root;
         if(root->right) inorder(root->right);
         return;
     }
     void recoverTree(TreeNode* root) {
         inorder(root);
-        int n=v.size();
-        for(int i=0;i<n;i++){
-            for(int j=i+1;j<n;j++){
-                if(v[i]->val>=v[j]->val){
-                int temp=v[i]->val;
-                v[i]->val=v[j]->val;
-                v[j]->val=temp;
-                }
-            }
-        }
+        int temp=x->val;
+        x->val=y->val;
+        y->val=temp;
+        return;
+
     }
 };

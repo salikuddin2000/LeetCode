@@ -20,7 +20,7 @@ public:
 */
 
 class Solution {
-    vector<Node*> vis= std :: vector<Node*> (1e5);
+    vector<Node*> vis= std :: vector<Node*> (1000);
 public:
     Node* cloneGraph(Node* node) {
         if(!node) return node;

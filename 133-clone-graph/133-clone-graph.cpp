@@ -24,12 +24,12 @@ class Solution {
 public:
     Node* cloneGraph(Node* node) {
         if(!node) return node;
-        if(vis[node->val]!=NULL) return vis[node->val];
         Node* root= new Node(node->val);
         if(node->neighbors.empty()) return root;
         vis[node->val]=root;
         for(auto it: node->neighbors){
-            root->neighbors.push_back(cloneGraph(it));
+            if(vis[it->val]!=NULL) root->neighbors.push_back(vis[it->val]);
+            else root->neighbors.push_back(cloneGraph(it));
         }
         return root;
     }

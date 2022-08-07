@@ -16,8 +16,8 @@ public:
       return parent[a]=find_set(parent[a]);
     }
     void union_set(int a, int b) {
-        // a=find_set(a);
-        // b= find_set(b);
+        a=find_set(a);
+        b= find_set(b);
         if(a!=b) {
             if(sz[a]<sz[b]) 
               swap(a,b);
@@ -37,7 +37,7 @@ public:
           int a = find_set(u);
           int b = find_set(v);
           if(a!=b) {
-               union_set(a,b);
+               union_set(u,v);
           }
       }
       int a = find_set(source);

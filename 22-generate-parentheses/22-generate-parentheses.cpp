@@ -1,33 +1,23 @@
 class Solution {
-    int size;
 public:
-    vector<string> helper(int sz,int open,int close){
-        if(sz==2*size) return{""};
-        // string str="";
-        vector<string> ans;
-        if(open==close) {
-            vector<string> v=helper(sz+1,open+1,close);
-            for(auto itr:v){
-                ans.push_back("("+itr);
-            }
-        }
-        else{
-            if(open<size){
-                vector<string> op=helper(sz+1,open+1,close);
-                for(auto itr:op){
-                    ans.push_back("("+itr);
-                }
-            }
-            vector<string> cl=helper(sz+1,open,close+1);
-            for(auto itr:cl){
-                ans.push_back(")"+itr);
-            }
-        }
-        return ans;
-
+vector<string> ans;
+void gen(string s, int n, int o, int c){
+    if(o == n && c == n){
+        ans.push_back(s);
+        return;
     }
-    vector<string> generateParenthesis(int n) {
-        size=n;
-        return helper(0,0,0);
+    
+    if(o < n) {
+        gen(s+"(", n, o+1, c);            
     }
+    
+    if(o > 0 && c < n && c < o){
+        gen(s+")", n, o, c+1);            
+    }
+    
+}
+vector<string> generateParenthesis(int n) {
+    gen("",n,0,0);
+    return ans;
+}
 };

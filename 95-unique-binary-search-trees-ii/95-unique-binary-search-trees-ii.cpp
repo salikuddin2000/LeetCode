@@ -19,12 +19,14 @@ public:
         }
         for(int i=start; i<=end; i++){
             vector<TreeNode*> leftSubtrees= constructTrees(start,i-1);
+            int leftSz=leftSubtrees.size();
             vector<TreeNode*> rightSubtrees= constructTrees(i+1,end);
-            for(int j=0;j<leftSubtrees.size();j++){
+            int rightSz=rightSubtrees.size();
+            for(int j=0;j<leftSz;j++){
                 TreeNode* left=leftSubtrees[j];
-                for(int k=0;k<rightSubtrees.size();k++){
-                    TreeNode* right=rightSubtrees[k];
+                for(int k=0;k<rightSz;k++){
                     TreeNode* node = new TreeNode(i);
+                    TreeNode* right=rightSubtrees[k];
                     node->left=left;
                     node->right=right;
                     trees.push_back(node);

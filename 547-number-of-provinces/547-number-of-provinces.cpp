@@ -1,7 +1,7 @@
 class Solution {
-    vector<int> parent= std::vector<int> (1e5);
-    vector<bool> vis= std::vector<bool> (1e5);
-    vector<int> sz= std::vector<int> (1e5);
+    vector<int> parent= std::vector<int> (100);
+    vector<bool> vis= std::vector<bool> (100);
+    vector<int> sz= std::vector<int> (100);
 public:
     void make_set(int a){
         parent[a]=a;

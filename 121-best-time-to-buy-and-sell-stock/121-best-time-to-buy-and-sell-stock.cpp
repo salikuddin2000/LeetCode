@@ -12,6 +12,9 @@ public:
         return max((sell(prices,pos+1,n,minPrice)-prices[pos]),buy(prices,pos+1,n,minPrice));
     }
     int maxProfit(vector<int>& prices) {
+        ios::sync_with_stdio(false);
+        cin.tie(0);
+        cout.tie(0);
         int n=prices.size();  
         vector<int>minPrice=std:: vector<int>(n+1,-1);
         return buy(prices,0,n,minPrice);
